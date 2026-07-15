@@ -1,17 +1,118 @@
 ---
-
+import Experience from '../components/Experience';
+import '../styles/global.scss';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>FreelancerOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- React Three.js Container -->
+    <Experience client:only="react" />
+
+    <!-- Minimal, Luxury UI Overlay -->
+    <nav class="ui-nav">
+      <div class="logo">
+        <strong>Freelancer</strong>Planning <span class="tag">AI OPERATING SYSTEM</span>
+      </div>
+      <div class="links">
+        <span class="active">OVERVIEW</span>
+        <span>TOOLS</span>
+        <span>SYSTEM</span>
+        <span>VISION</span>
+      </div>
+      <div class="cta">
+        ENTER OS <span class="circle-icon"></span>
+      </div>
+    </nav>
+
+    <!-- Main Title -->
+    <div class="hero-content">
+      <h4 class="ai-powered"><span class="plus">+</span> AI-POWERED</h4>
+      <h1>
+        Complex<br/>
+        AI Operating System<br/>
+        <span class="italic-accent">for Freelancers</span>
+      </h1>
+      <p>
+        Plan. Propose. Execute. Grow.<br/>
+        An AI OS that runs your freelance business<br/>
+        while you focus on what you do best.
+      </p>
+      <div class="enter-btn">ENTER THE SYSTEM <span>↗</span></div>
+    </div>
+
+    <!-- 3D DOM Anchors for Labels (Managed by React, but static examples for UI here) -->
+    <div class="anchor-label proposal-label">
+      <div class="line"></div>
+      <div class="text">
+        AI PROPOSAL<br/>GENERATOR<br/><span class="number">01</span>
+      </div>
+    </div>
+    
+    <div class="anchor-label planner-label">
+      <div class="line"></div>
+      <div class="text">
+        AI SCOPE<br/>PLANNER<br/><span class="number">02</span>
+      </div>
+    </div>
+    
+    <div class="anchor-label dashboard-label">
+      <div class="line"></div>
+      <div class="text">
+        AI FREELANCER<br/>DASHBOARD<br/><span class="number">03</span>
+      </div>
+    </div>
+
+    <!-- Bottom Dashboard -->
+    <div class="dashboard-panel">
+      <div class="glass-bg"></div>
+      <div class="stat-group">
+        <div class="pulse-dot"></div>
+        <div class="stat-meta">
+          <span class="label">SYSTEM STATUS</span>
+          <span class="value success">ACTIVE</span>
+        </div>
+      </div>
+      
+      <div class="stat-group">
+        <span class="label">PROPOSALS</span>
+        <span class="value">24 <span class="increase">+12%</span></span>
+      </div>
+      
+      <div class="stat-group">
+        <span class="label">PROJECTS</span>
+        <span class="value">7 <span class="increase">+8%</span></span>
+      </div>
+      
+      <div class="stat-group">
+        <span class="label">REVENUE</span>
+        <span class="value">$24.8K <span class="increase">+18%</span></span>
+      </div>
+      
+      <div class="stat-group">
+        <span class="label">HOURS SAVED</span>
+        <span class="value">36.4 <span class="increase">+9%</span></span>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="icon"></div>
+      <span>SCROLL / DRAG / MOVE</span>
+    </div>
+    
+    <!-- Sound Toggle -->
+    <div class="sound-toggle">
+      <div class="bars">|||</div> SOUND <span class="state">ON</span>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,330 @@
+:root {
+  --c-bg: #030304;
+  --c-text: #f5f5f7;
+  --c-muted: #86868b;
+  --c-muted-dark: #4b4b4f;
+  --c-accent: #e0b57e;
+  --c-rim: #384159;
+  --c-border: rgba(255,255,255,0.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.italic-accent {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-muted);
+}
+
+/* --- NAV --- */
+.ui-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-sizing: border-box;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-muted);
+
+  .logo {
+    color: var(--c-text);
+    font-size: 14px;
+    letter-spacing: 0px;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    strong { font-weight: 600; }
+    .tag {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--c-muted-dark);
+      text-transform: uppercase;
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 50px;
+    span {
+      cursor: pointer;
+      transition: color 0.3s ease;
+      &:hover { color: var(--c-text); }
+      &.active { 
+        color: var(--c-text); 
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 20px;
+          height: 1px;
+          background: rgba(255,255,255,0.3);
+          box-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+      }
+    }
+  }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 9px;
+    .circle-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--c-text);
+      border-radius: 50%;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2px; height: 2px;
+        background: var(--c-text);
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+/* --- HERO --- */
+.hero-content {
+  position: fixed;
+  top: 50%;
+  left: 80px;
+  transform: translateY(-50%);
+  z-index: 10;
+  max-width: 500px;
+  pointer-events: none;
+
+  .ai-powered {
+    color: var(--c-accent);
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    .plus { color: var(--c-text); margin-right: 5px; }
+  }
+
+  h1 {
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 0 0 35px 0;
+    letter-spacing: -2px;
+  }
+
+  p {
+    color: var(--c-muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+  }
+  
+  .enter-btn {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--c-border);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    &:hover span {
+      background: rgba(255,255,255,0.1);
+    }
+  }
+}
+
+/* --- MODULE LABELS --- */
+.anchor-label {
+  position: absolute; // Note: In a real React app, these would follow 3D coords
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  pointer-events: none;
+  
+  .line {
+    width: 60px;
+    height: 1px;
+    background: var(--c-border);
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0; top: -1px;
+      width: 3px; height: 3px;
+      background: var(--c-text);
+      border-radius: 50%;
+    }
+  }
+  
+  .text {
+    font-size: 9px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+    color: var(--c-muted);
+    position: relative;
+    .number {
+      position: absolute;
+      right: -25px;
+      bottom: 0;
+      color: #3b5080;
+      font-weight: 600;
+    }
+  }
+}
+// Static positions for demo purposes matching the reference
+.proposal-label { top: 25%; left: 45%; }
+.planner-label { top: 60%; left: 45%; }
+.dashboard-label { top: 58%; right: 15%; .line { order: 2; &::after { left: 0; } } }
+
+/* --- DASHBOARD --- */
+.dashboard-panel {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1200px;
+  height: 80px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border: 1px solid var(--c-border);
+  border-radius: 40px;
+  
+  .glass-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 40px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+  
+  .stat-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    &:first-child { flex-direction: row; align-items: center; gap: 15px; }
+    
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: var(--c-accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--c-accent);
+    }
+    
+    .label {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--c-muted-dark);
+      text-transform: uppercase;
+    }
+    .value {
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--c-text);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      
+      &.success { font-size: 10px; letter-spacing: 2px; color: #6db370; }
+      
+      .increase {
+        font-size: 10px;
+        color: #6db370;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+/* --- BOTTOM CONTROLS --- */
+.scroll-indicator {
+  position: fixed;
+  bottom: 40px;
+  left: 50px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    border: 1px dashed var(--c-muted);
+    border-radius: 50%;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 4px; background: var(--c-muted); border-radius: 2px;
+    }
+  }
+
+  span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--c-muted-dark);
+  }
+}
+
+.sound-toggle {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--c-muted-dark);
+  cursor: pointer;
+  
+  .bars {
+    font-weight: bold;
+    color: var(--c-text);
+  }
+  .state { color: var(--c-text); }
+}
